@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MAUIAllApp.MenuBarPage"
+             Title="MenuBarPage"
+             NavigationPage.IconColor="LightGray">
+
+    <NavigationPage.TitleView>
+        <Label Text="MenuBar Animation" VerticalTextAlignment="Center" TextColor="LightGray" BackgroundColor="Black" FontFamily="Jose" FontSize="24"/>
+    </NavigationPage.TitleView>
+
+    <Grid IgnoreSafeArea="True">
+    <Grid x:Name="MenuGrid" IgnoreSafeArea="True">
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Offset="0.0" Color="#666666"/>
+                <GradientStop Offset="1.0" Color="#000000"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+
+            <Grid.GestureRecognizers>
+                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="Close_Tapped"/>
+            </Grid.GestureRecognizers>
+
+            <Label Text="X" FontFamily="Jose" 
+                   FontAttributes="Bold" Margin="10,0,0,20" 
+                   FontSize="36" TextColor="DarkGray" 
+                   VerticalOptions="Start" 
+                   HorizontalOptions="Start"/>
+        </Grid>
+
+        <Grid x:Name="MainGrid" BackgroundColor="LightPink">
+            <Image Source="menu.png" WidthRequest="50" HeightRequest="50" VerticalOptions="Start" HorizontalOptions="Start">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="Menu_Tapped"/>
+                </Image.GestureRecognizers>
+            </Image>
+        </Grid>
+    </Grid>
+</ContentPage>

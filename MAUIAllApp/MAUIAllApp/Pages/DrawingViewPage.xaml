@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MAUIAllApp.DrawingViewPage"
+             BackgroundColor="Black"
+             NavigationPage.IconColor="LightGray"
+             xmlns:mct="clr-namespace:CommunityToolkit.Maui.Views;assembly=CommunityToolkit.Maui">
+
+    <NavigationPage.TitleView>
+        <Label Text="Scribble Pad" VerticalTextAlignment="Center" TextColor="LightGray" BackgroundColor="Black" FontFamily="Jose" FontSize="24"/>
+    </NavigationPage.TitleView>
+
+    <StackLayout>
+        <Label Text="Sign / Scribble Something" FontSize="18" TextColor="LightGray" FontFamily="Jose"/>
+
+        <Frame CornerRadius="10" Margin="25">
+            <mct:DrawingView 
+            x:Name="DrawView"
+            IsMultiLineModeEnabled="True"
+            LineColor="Green"
+            BackgroundColor="Transparent"
+            WidthRequest="400"
+            HeightRequest="500"
+            LineWidth="{Binding Source={x:Reference slider}, Path=Value}"/>
+        </Frame>
+
+        <Grid>
+            <Grid Grid.Column="0">
+                <Slider Grid.Row="1" Margin="0,0,75,0" BackgroundColor="Transparent"
+                x:Name="slider"
+                ThumbColor="Red"
+                ValueChanged="slider_ValueChanged"
+                />
+            </Grid>
+
+            <Grid Grid.Column="1">
+                <Image
+               Margin="0,0,10,0"
+                HorizontalOptions="End" 
+                WidthRequest="50" 
+                HeightRequest="50" 
+                Source="erase.png">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" NumberOfTapsRequired="1"/>
+                    </Image.GestureRecognizers>
+                </Image>
+            </Grid>
+        </Grid>
+
+    </StackLayout>
+</ContentPage>
